@@ -1,0 +1,14 @@
+subscription_id = "00000000-0000-0000-0000-000000000000"
+tenant_id       = "00000000-0000-0000-0000-000000000000"
+location        = "eastus"
+region_code     = "eus"
+environment     = "dev"
+
+vnet_address_space                  = ["10.40.0.0/16"]
+aks_system_subnet_address_prefixes  = ["10.40.0.0/22"]
+aks_default_node_pool_vm_size       = "Standard_D2s_v5"
+aks_default_node_pool_node_count    = 2
+
+tags = {
+  owner = "platform-engineering"
+}

@@ -10,13 +10,12 @@ A fintech platform team needs a standard internal platform for deploying AI infe
 
 ## Architecture
 
-Client -> Ingress -> AKS Inference Workloads -> FastAPI / vLLM -> Observability
+Client / VS Code -> Ingress or port-forward -> AKS Inference Workloads -> vLLM OpenAI-compatible API -> Observability
 
 ## Main Components
 
 - AKS
 - Terraform
-- Argo CD
 - Azure Container Registry
 - Azure Key Vault
 - Workload Identity
@@ -24,23 +23,25 @@ Client -> Ingress -> AKS Inference Workloads -> FastAPI / vLLM -> Observability
 - Prometheus/Grafana
 - FastAPI
 - vLLM
+- Helm / Kubernetes manifests
 
 ## Project Phases
 
 1. Repo and architecture setup
 2. Terraform AKS foundation
-3. Argo CD GitOps foundation
-4. FastAPI inference service
-5. Observability
-6. Autoscaling and load testing
-7. vLLM endpoint
-8. Failure scenarios
-9. Final demo
+3. Direct cluster setup with Helm or Kubernetes manifests
+4. vLLM endpoint serving an OSS model through an OpenAI-compatible API
+5. VS Code integration test
+6. Observability
+7. Autoscaling and load testing
+8. Optional Argo CD GitOps foundation
+9. Failure scenarios
+10. Final demo
 
 ## Safety Rules
 
 - No direct production mutation by agents
 - No `terraform apply` by agents
-- GitOps-first application deployment
+- Direct dev deployment first; GitOps later
 - CPU-first path
 - GPU optional

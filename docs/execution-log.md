@@ -18,3 +18,19 @@
 
 ### Next
 - Build Terraform module skeleton
+
+## Day 2
+
+### Direction Change
+- Skip Argo CD for the initial implementation.
+- Build the Azure infrastructure foundation first.
+- Configure AKS directly with Helm or Kubernetes manifests.
+- Deploy vLLM and serve an OSS model through an OpenAI-compatible API.
+- Integrate the endpoint with VS Code after direct API testing works.
+
+### Completed
+- Added `infra/envs/dev` Terraform root stack skeleton.
+- Wired the dev root stack to the reusable resource group module from the sibling `terraform` repo.
+
+### Next
+- Add or consume reusable modules for network, ACR, Log Analytics, Key Vault, and AKS.
