@@ -2,7 +2,7 @@
 
 ## Goal
 
-Build a practical AI inference platform on Azure Kubernetes Service that serves traditional ML and LLM-style workloads using Terraform, Argo CD, ACR, Key Vault, Azure Monitor, Prometheus/Grafana, FastAPI, and vLLM.
+Build a practical AI inference platform on Azure Kubernetes Service that serves an open-source model through vLLM and an OpenAI-compatible API.
 
 ## Real-World Story
 
@@ -10,30 +10,35 @@ A fintech platform team needs a standard internal platform for deploying AI infe
 
 ## Architecture
 
-Client / VS Code -> Ingress or port-forward -> AKS Inference Workloads -> vLLM OpenAI-compatible API -> Observability
+Client / VS Code -> port-forward -> AKS -> vLLM OpenAI-compatible API -> OSS model runtime
 
 ## Main Components
 
 - AKS
 - Terraform
 - Azure Container Registry
-- Azure Key Vault
-- Workload Identity
-- Azure Monitor
-- Prometheus/Grafana
-- FastAPI
 - vLLM
 - Helm / Kubernetes manifests
+- port-forward access for the first local-client test
+
+## Deferred Components
+
+- Azure Key Vault and Workload Identity
+- Azure Monitor, Prometheus, and Grafana
+- private endpoints and private DNS
+- autoscaling and load testing
+- Argo CD and GitOps
+- traditional ML-serving APIs such as FastAPI
 
 ## Project Phases
 
 1. Repo and architecture setup
-2. Terraform AKS foundation
-3. Direct cluster setup with Helm or Kubernetes manifests
-4. vLLM endpoint serving an OSS model through an OpenAI-compatible API
-5. VS Code integration test
-6. Observability
-7. Autoscaling and load testing
+2. Compose the dev environment from the reusable Terraform modules
+3. Provision the AKS, ACR, and ACR-pull integration path
+4. Direct cluster setup with Kubernetes manifests
+5. vLLM endpoint serving an OSS model through an OpenAI-compatible API
+6. VS Code integration test through port-forward
+7. Observability, autoscaling, and load testing
 8. Optional Argo CD GitOps foundation
 9. Failure scenarios
 10. Final demo

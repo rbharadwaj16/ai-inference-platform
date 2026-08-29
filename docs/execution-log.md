@@ -10,14 +10,14 @@
 
 ### Decisions
 - CPU-first path
-- GitOps-first deployment
+- GitOps-first deployment (superseded by the Day 2 direct-deployment decision)
 - Terraform PR Agent will be constrained to PR generation only
 
 ### Blockers
 - None
 
 ### Next
-- Build Terraform module skeleton
+- Build Terraform module skeleton (completed in the sibling `terraform` repository)
 
 ## Day 2
 
@@ -33,4 +33,15 @@
 - Wired the dev root stack to the reusable resource group module from the sibling `terraform` repo.
 
 ### Next
-- Add or consume reusable modules for network, ACR, Log Analytics, Key Vault, and AKS.
+- Compose the dev root stack from the reusable resource group, virtual network, ACR, AKS, and role-assignment modules.
+
+## Day 3
+
+### Completed
+- Completed and merged the initial reusable module baseline in the sibling `terraform` repository: resource group, virtual network, ACR, AKS, and generic role assignment.
+- Defined the ACR pull path: grant the AKS kubelet identity the `AcrPull` role at ACR scope.
+
+### Next
+- Migrate `infra/envs/dev` from the legacy module paths to the current reusable modules.
+- Validate the dev root stack with `terraform plan`; do not run `terraform apply` through an agent.
+- Deploy the vLLM manifests and test the API through port-forward.
