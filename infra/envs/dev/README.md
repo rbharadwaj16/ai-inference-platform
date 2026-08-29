@@ -4,20 +4,19 @@ This directory is the Terraform root module for the dev AI inference platform.
 
 The root stack calls reusable Azure modules from the sibling `terraform` repo. In Terraform terms, this directory is the root module because this is where `terraform plan` is run. The reusable modules it calls are child modules.
 
-## Current Scope
+## Target Scope
 
-- Resource group via `az_platform_modules/modules/resource-group`
-- Virtual network and AKS system subnet via `az_platform_modules/modules/virtual-network`
-- AKS via `az_platform_modules/modules/aks`
+- Resource group via `terraform/modules/terraform-azurerm-resource-group`
+- Virtual network and AKS system subnet via `terraform/modules/terraform-azurerm-virtual-network`
+- Azure Container Registry via `terraform/modules/terraform-azurerm-container-registry`
+- AKS via `terraform/modules/terraform-azurerm-aks`
+- `AcrPull` role assignment for the AKS kubelet identity via `terraform/modules/terraform-azurerm-role-assignment`
 
-## Next Infrastructure Modules
+## Current Migration State
 
-Add these as reusable modules in the sibling `terraform` repo, then call them from this root stack:
+`main.tf` is still wired to the legacy `az_platform_modules` paths and has not yet added ACR or the `AcrPull` role assignment. The next implementation change is to replace those sources with the target modules above and adapt the root stack to their direct-input contracts.
 
-1. Azure Container Registry
-2. Log Analytics workspace
-3. Key Vault
-4. Optional user node pool for inference workloads
+Log Analytics, Key Vault integration, private endpoints, and a dedicated inference node pool are deferred until the direct vLLM path works.
 
 ## Deployment Direction
 

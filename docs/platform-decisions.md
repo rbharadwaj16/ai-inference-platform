@@ -16,16 +16,16 @@ Deferred. Argo CD will be introduced after the direct vLLM deployment path works
 Azure Container Registry
 
 ## Secrets
-Azure Key Vault
+Deferred. Azure Key Vault is not needed for the first public-image, port-forward inference test.
 
 ## Identity
-Azure Workload Identity
+Deferred. Azure Workload Identity will be introduced with Key Vault or another workload-to-Azure integration.
 
 ## Observability
-Azure Monitor, Prometheus, Grafana
+Deferred until the direct vLLM endpoint works.
 
 ## Traditional ML Serving
-FastAPI
+Deferred. The initial runtime is vLLM only.
 
 ## LLM Serving
 vLLM
@@ -47,7 +47,7 @@ GitHub Actions
 CPU-first.
 
 ## Optional Extension
-GPU node pool for vLLM if quota and cost allow.
+Dedicated GPU node pool for vLLM if quota and cost allow.
 
 ## Deployment Rule
 Application workloads can be deployed directly in dev while the inference path is being proven. GitOps will be added later.
