@@ -16,4 +16,14 @@ spec:
         app.kubernetes.io/name: vllm
         app.kubernetes.io/component: model-server
     spec:
-      containers: []
+      containers:
+        - name: vllm
+          image: vllm/vllm-openai-cpu:latest-x86_64
+          args:
+            - --model
+            - meta-llama/Llama-3.2-1B-Instruct
+            - --served-model-name
+            - llama-3.2-1b-instruct
+          ports:
+            - name: http
+              containerPort: 8000
