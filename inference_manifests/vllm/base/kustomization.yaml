@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - 01-namespace.yaml
   - 02-model-cache-pvc.yaml
+  - 03-deployment.yaml
