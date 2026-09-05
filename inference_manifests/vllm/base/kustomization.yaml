@@ -1,5 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
+namespace: ai-inference
+
 resources:
   - 01-namespace.yaml
   - 02-model-cache-pvc.yaml
