@@ -7,6 +7,8 @@ metadata:
     app.kubernetes.io/component: model-server
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/name: vllm
@@ -68,9 +70,15 @@ spec:
               cpu: "2"
               memory: 8Gi
           volumeMounts:
+            - name: dshm
+              mountPath: /dev/shm
             - name: model-cache
               mountPath: /root/.cache/huggingface
       volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 512Mi
         - name: model-cache
           persistentVolumeClaim:
             claimName: vllm-model-cache
