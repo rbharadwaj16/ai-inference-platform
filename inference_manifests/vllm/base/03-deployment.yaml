@@ -16,6 +16,11 @@ spec:
         app.kubernetes.io/name: vllm
         app.kubernetes.io/component: model-server
     spec:
+      tolerations:
+        - key: workload
+          operator: Equal
+          value: cpu_inference
+          effect: NoSchedule
       containers:
         - name: vllm
           image: vllm/vllm-openai-cpu:latest-x86_64
