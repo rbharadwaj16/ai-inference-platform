@@ -18,6 +18,7 @@ spec:
         app.kubernetes.io/name: vllm
         app.kubernetes.io/component: model-server
     spec:
+      enableServiceLinks: false
       tolerations:
         - key: workload
           operator: Equal
