@@ -29,6 +29,12 @@ spec:
           image: vllm/vllm-openai-cpu:latest-x86_64
           args:
             - --enforce-eager
+            - --max-model-len
+            - "4096"
+            - --max-num-batched-tokens
+            - "256"
+            - --max-num-seqs
+            - "1"
             - --model
             - meta-llama/Llama-3.2-1B-Instruct
             - --served-model-name
