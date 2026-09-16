@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vllm-gpu-deployment
+  labels:
+    app.kubernetes.io/name: vllm
+    app.kubernetes.io/part-of: gpu-ai-inference
+    app.kubernetes.io/component: model-server
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app.kubernetes.io/name: vllm-gpu    
+    strategy:
+      type: Recreate
+    template:
+      metadata:
+        labels:
+          app.kubernetes.io/name: vllm
+          app.kubernetes.io/part-of: gpu-ai-inference
+          app.kubernetes.io/component: model-server
+      spec:
+        enableServiceLinks: false
+        nodeSelector:
+          workload: gpu-inference
+        tolerations:
+          - key: workload
+            operator: Equal
+            value: gpu_inference
+            effect: NoSchedule
