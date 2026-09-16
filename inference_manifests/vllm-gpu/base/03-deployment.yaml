@@ -16,7 +16,7 @@ spec:
     template:
       metadata:
         labels:
-          app.kubernetes.io/name: vllm
+          app.kubernetes.io/name: vllm-gpu
           app.kubernetes.io/part-of: gpu-ai-inference
           app.kubernetes.io/component: model-server
       spec:
