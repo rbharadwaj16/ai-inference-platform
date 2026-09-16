@@ -3,10 +3,10 @@ kind: Deployment
 metadata:
   name: vllm-gpu-deployment
   labels:
-    app.kubernetes.io/name: vllm
+    app.kubernetes.io/name: vllm-gpu
     app.kubernetes.io/part-of: gpu-ai-inference
     app.kubernetes.io/component: model-server
-  spec:
+spec:
     replicas: 1
     selector:
       matchLabels:
