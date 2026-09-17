@@ -20,6 +20,9 @@ spec:
           app.kubernetes.io/part-of: gpu-ai-inference
           app.kubernetes.io/component: model-server
       spec:
+        containers:
+          - name: vllm-gpu-container
+            image: vllm/vllm-openai:latest
         enableServiceLinks: false
         nodeSelector:
           workload: gpu-inference
