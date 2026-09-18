@@ -23,6 +23,7 @@ spec:
         containers:
           - name: vllm-gpu-container
             image: vllm/vllm-openai:latest
+            imagePullPolicy: Always
         enableServiceLinks: false
         nodeSelector:
           workload: gpu-inference
