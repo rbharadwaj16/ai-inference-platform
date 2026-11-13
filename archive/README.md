@@ -4,9 +4,6 @@
 
 Build a practical AI inference platform on Azure Kubernetes Service that serves an open-source model through vLLM and an OpenAI-compatible API.
 
-## Real-World Story
-
-A fintech platform team needs a standard internal platform for deploying AI inference workloads. Product and data teams need to deploy fraud scoring, risk prediction, anomaly detection, and assistant-style services without building custom infrastructure every time.
 
 ## Architecture
 
